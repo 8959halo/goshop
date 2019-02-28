@@ -1,6 +1,3 @@
 /*
-* 包含n个状态数据的对象*/
-
-export default {
-
-}
+vuex最核心的管理对象: store
+ */

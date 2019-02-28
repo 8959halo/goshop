@@ -1,20 +1,25 @@
 <template>
   <div>
     <router-view/>
-    <FooterGuide/>
+    <FooterGuide v-show="$route.meta.showFooter"/>
   </div>
 </template>
 
 <script>
   import FooterGuide from './components/FooterGuide/FooterGuide.vue'
-  import {reqAddress} from './api'
+  import {reqInfo} from './api'
 
   export default {
+
     async mounted() {
-      const result= await reqAddress('116.36863', '40.10038')
-      console.log('==========================',result);
+      // 触发vuex的getAddress(), 从后台获取address
+      this.$store.dispatch('getAddress')
+      // 触发vuex的getUser(), 从后台获取user
+      this.$store.dispatch('getUser')
+      this.$store.dispatch('getShopInfo')
 
     },
+
     components: {
       FooterGuide
     }

@@ -17,14 +17,20 @@ module.exports = {
         pathRewrite: {// 重写路径: 去掉路径中开头的'/api'
           '^/api': ''
         }
-      }
+      },
+      '/baidu': { // 匹配所有以 '/api'开头的请求路径
+        target: 'http://www.baidu.com', // 代理目标的基础路径
+        changeOrigin: true, // 支持跨域
+        pathRewrite: {// 重写路径: 去掉路径中开头的'/api'
+          '^/baidu': ''
+        }
+      },
     },
-
 
     // Various Dev Server settings
     host: 'localhost', // can be overwritten by process.env.HOST
     port: 8080, // can be overwritten by process.env.PORT, if port is in use, a free one will be determined
-    autoOpenBrowser: true,
+    autoOpenBrowser: false,
     errorOverlay: true,
     notifyOnErrors: true,
     poll: false, // https://webpack.js.org/configuration/dev-server/#devserver-watchoptions-
@@ -32,7 +38,7 @@ module.exports = {
     // Use Eslint Loader?
     // If true, your code will be linted during bundling and
     // linting errors and warnings will be shown in the console.
-    useEslint: false,
+    useEslint: true,
     // If true, eslint errors and warnings will also be shown in the error overlay
     // in the browser.
     showEslintErrorsInOverlay: false,
